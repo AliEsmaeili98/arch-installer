@@ -62,7 +62,7 @@ echo "[*] Installing NVIDIA drivers and Hyprland..."
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings \
     hyprland xdg-desktop-portal-hyprland \
     wl-clipboard waybar wofi foot network-manager-applet \
-    zsh-autosuggestions zsh-syntax-highlighting noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono
+    zsh-autosuggestions zsh-syntax-highlighting noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono kitty dolphin firefox
 
 echo "[*] NVIDIA kernel module settings..."
 mkdir -p /etc/modprobe.d
