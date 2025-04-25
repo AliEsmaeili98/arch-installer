@@ -36,8 +36,9 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "[*] Configuring system in chroot..."
 arch-chroot /mnt /bin/bash <<EOF
 ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+sed -i '/^multilib/,/^Include/ s/^#//' /etc/pacman.conf
+pacman -Sy
 hwclock --systohc
-
 echo "$LOCALE UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=$LOCALE" > /etc/locale.conf
@@ -59,7 +60,7 @@ systemctl enable NetworkManager
 nmcli dev wifi connect "$SSID" password "$WIFI_PASS"
 
 echo "[*] Installing NVIDIA drivers and Hyprland..."
-pacman -S --noconfirm nvidia nvidia-utils nvidia-settings \
+pacman -S --noconfirm nvidia nvidia-utils lib32-nvidia-utils nvidia-settings \
     hyprland xdg-desktop-portal-hyprland \
     wl-clipboard waybar wofi foot network-manager-applet \
     zsh-autosuggestions zsh-syntax-highlighting noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono kitty dolphin firefox
