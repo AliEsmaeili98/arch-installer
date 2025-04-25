@@ -94,7 +94,6 @@ EOL
 echo "[*] Hyprland autostart for $USERNAME..."
 sudo -u $USERNAME mkdir -p /home/$USERNAME/.config
 sudo -u $USERNAME bash -c "echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec Hyprland' > /home/$USERNAME/.bash_profile"
-'
 
 EOF
 
