@@ -94,13 +94,6 @@ EOL
 echo "[*] Hyprland autostart for $USERNAME..."
 sudo -u $USERNAME mkdir -p /home/$USERNAME/.config
 sudo -u $USERNAME bash -c "echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec Hyprland' > /home/$USERNAME/.bash_profile"
-
-echo "[*] Installing yay (AUR helper)..."
-sudo -u $USERNAME bash -c '
-cd ~
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
 '
 
 EOF
