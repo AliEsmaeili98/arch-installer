@@ -94,15 +94,6 @@ echo "[*] Hyprland autostart for $USERNAME..."
 sudo -u $USERNAME mkdir -p /home/$USERNAME/.config
 sudo -u $USERNAME bash -c "echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec Hyprland' > /home/$USERNAME/.bash_profile"
 
-echo "[*] Installing oh-my-zsh + powerlevel10k for $USERNAME..."
-sudo -u $USERNAME sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-sudo -u $USERNAME git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/$USERNAME/.oh-my-zsh/custom/themes/powerlevel10k
-sudo -u $USERNAME sed -i 's|^ZSH_THEME=.*|ZSH_THEME="powerlevel10k/powerlevel10k"|' /home/$USERNAME/.zshrc
-echo "
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-" | sudo -u $USERNAME tee -a /home/$USERNAME/.zshrc
-
 echo "[*] Installing yay (AUR helper)..."
 sudo -u $USERNAME bash -c '
 cd ~
